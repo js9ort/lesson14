@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> 
+	
+	<style>
+		.container, .row {
+			margin-top: 30px;
+		}
+		
+		.col-form-label{
+			font-weight: bold;
+			text-align: right;
+		}
+		
+		button {
+			width: 100%;
+		}
+	</style>
+  </head>
+  <body>
+    <main class="container">
+	
+		<div class="row">
+			<div class="col-8 offset-2">
+				<h1 class="text-center">Пополенение телефона</h1>
+					<div class="form-group row">
+					  <label for="phone_number" class="col-4 col-form-label">Номер телефона: </label>
+					  <div class="col-8">
+						<input class="form-control" type="text" value="+380" id="phone_number">
+					  </div>
+					</div>
+					<div class="form-group row">
+					  <label for="card_number" class="col-4 col-form-label">Номер банковской карты: </label>
+					  <div class="col-8">
+						<input class="form-control" type="text" placeholder="Например: 1234 5678 8765 4321" id="card_number">
+					  </div>
+					</div>
+					<div class="form-group row">
+					  <label for="pay_sum" class="col-4 col-form-label">Сумма пополенения: </label>
+					  <div class="col-7">
+						<input class="form-control" type="number" value="100" id="pay_sum">
+					  </div>
+					   <label for="pay_sum" class="col-1 col-form-label"> грн. </label>
+					</div>
+					<div class="row">
+						<div class="col-12 ">
+							<button class="btn btn-success">Пополнить</button>
+						</div>
+					</div>
+			</div>
+		</div>
+	
+	</main>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>

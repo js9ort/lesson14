@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+	<style>
+		.text-muted{
+			text-decoration: line-through;
+			color: #d0d0d0 !important;
+		}
+	</style>
+	
+  </head>
+  <body>
+  
+	<div class="container my-5">
+	
+		<h1>TODO App</h1>
+		
+		<hr>
+		
+		<div class="row">
+			<div class="col-10">
+				<input type='text' id='recordText' class="form-control w-100">
+			</div>
+			<div class="col-2">
+				<button class="btn btn-primary w-100" id='addButton'>ADD</button>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<div class="records">
+			
+			<h4 class="my-3 p-2 shadow border">Do Something Amazing!</h4>
+			
+			<h4 class="my-3 p-2 shadow border text-muted">Buy coffee</h4>
+			
+		</div>
+
+	</div>
+	
+	<script>
+	
+	
+	
+	let records = [];
+	
+	function muteEvent(){
+		let recordId = +this.getAttribute('data-id');
+		
+		let record = records.find(item => item.id === recordId);
+		record.muted = !record.muted;
+		
+		draw();
+	}
+	
+	function deleteEvent(){
+		
+		if(!confirm('Are you sure?')) return;
+	
+		let recordId = +this.getAttribute('data-id');
+
+		records = records.filter(item => item.id !== recordId);
+		draw();
+	}
+	
+	function draw(){
+		let recordsPlace = document.querySelector('.records');
+		
+		recordsPlace.innerHTML = records.map(item => `
+			<h4 class="my-3 p-2 shadow border ${item.muted ? 'text-muted' : ''}" data-id='${item.id}'>
+				${item.text}
+			</h4>
+		`).join('');
+		
+		recordsPlace.querySelectorAll('h4').forEach(tag => {
+			tag.addEventListener('click', muteEvent);
+			tag.addEventListener('dblclick', deleteEvent);
+		});
+		
+		localStorage.setItem('records', JSON.stringify(records));
+	}
+
+	document.addEventListener('DOMContentLoaded', function(){
+		
+		let loadedRecords = localStorage.getItem('records');
+			
+		if(loadedRecords){
+			records = JSON.parse(loadedRecords);
+			draw();
+		}
+		
+		document.getElementById('addButton').addEventListener('click', function(){
+			
+			if(!recordText.value.trim()) return;
+			
+			let newRecord = {
+				text: recordText.value.trim(),
+				muted: false,
+				id: records.length + 1
+			}
+			
+			records.unshift(newRecord);
+			draw();
+			
+			recordText.value = '';	
+			
+		});			
+	});
+		
+	</script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

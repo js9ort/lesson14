@@ -1,2 +1,3 @@
 # lesson14
 Lesson #14 (27 &amp; 28) | JS9@ORT
+Node.JS – JavaScript вне браузера. Пакеты в Node.JS, NPM – Node Package Manager – библиотека пакетов для Node.JS. Node.JS в клиент-серверной архитектуре. HTTP-сервер на базе Node.JS. Статический веб-сервер на базе Node.JS. Локальное хранилище данных в браузере localStorage. Методика работы с localStorage. Создание TODO-приложения с хранением данных в localStorage. 

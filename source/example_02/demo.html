@@ -104,7 +104,7 @@
 			let newRecord = {
 				text: recordText.value.trim(),
 				muted: false,
-				id: records.length + 1
+				id: Math.max(...records.map(item => item.id)) + 1
 			}
 			
 			records.unshift(newRecord);
